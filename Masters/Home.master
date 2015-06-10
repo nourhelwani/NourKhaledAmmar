@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Home.master.cs" Inherits="Masters_Home" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>3alyamen - عاليمين</title>
+    <link rel="stylesheet" href="../CSSs/bootstrap.min.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+    <link rel="stylesheet" href="../CSSs/Home.css" />
+    <script type="text/javascript" src="../Scripts/jquery1.10.2.js"></script>
+    <script type="text/javascript" src="../Scripts/jqueryui1.11.3.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=places,geometry&language=ar"></script>
+    <script type="text/javascript" src="../Scripts/MarkerClusterer.js"></script>
+    <script type="text/javascript" src="../Scripts/list.js"></script>
+    <script type="text/javascript" src="../Scripts/Codepros.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="HomeContentDiv">
+        <asp:ContentPlaceHolder id="HomeContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

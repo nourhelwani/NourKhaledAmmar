@@ -1,0 +1,170 @@
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.menu {
+    padding: 65px 0PX 0PX 0PX;
+    margin: 0px 0px 0px 0px;
+    outline: 0px;
+    border: none;
+    width: 16%;
+    background-color: rgb(222,222,222);
+    height: 100%;
+    box-shadow: 1px 1px 5px gray;
+    position: absolute;
+}
+
+.MainContainer {
+    position: absolute;
+    top: 60px;
+    left: 16%;
+    right: 0px;
+    width: 84%;
+    height: 100%;
+}
+
+.menu p {
+    padding: 15px 15px 15px 35px;
+    font-size: 16px;
+    line-height: 34px;
+    background-color: rgb(222,222,222);
+    cursor: pointer;
+    font-family: sans-serif;
+}
+
+    .menu p:hover {
+        background-color: #D4F0F0;
+    }
+
+    .menu p a {
+        text-decoration: none;
+        color: black;
+    }
+
+.menu li {
+    list-style: none;
+    text-decoration: none;
+    display: block;
+}
+
+.menu ul ul li a {
+    font-size: 13px;
+    line-height: 27px;
+    display: block;
+    padding: 15px 15px 18px 20px;
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+}
+
+    .menu ul ul li a:hover {
+        background-color: rgb(230,230,230);
+    }
+
+.menu ul ul {
+    display: none;
+}
+
+.header_up {
+    margin: 0px;
+    width: 100%;
+    padding: 15px 0px 15px 15px;
+    background-color: background: #49c0f0; /* Old browsers */
+    background: -moz-linear-gradient(left, #49c0f0 0%, #2cafe3 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#49c0f0), color-stop(100%,#2cafe3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, #49c0f0 0%,#2cafe3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, #49c0f0 0%,#2cafe3 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, #49c0f0 0%,#2cafe3 100%); /* IE10+ */
+    background: linear-gradient(to right, #49c0f0 0%,#2cafe3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49c0f0', endColorstr='#2cafe3',GradientType=1 ); /* IE6-9 */
+    color: white;
+    font-size: 25px;
+    font-family: sans-serif;
+    box-shadow: 1px 1px 2px gray;
+}
+
+.btn-logout {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 15px 35px 0px 0px;
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    width: 90px;
+    height: 30px;
+    padding: 5px 5px 5px 5px;
+}
+
+    .btn-logout:hover {
+        color: rgb(222,222,222);
+        background-color: #CA3C3C;
+        cursor: pointer;
+    }
+
+#divAddMarkerMapContainer {
+    width: 100%;
+    height: 100%;
+}
+
+#divSelectCategory {
+    background-color: rgb(230,230,230);
+    border-radius: 2px;
+}
+
+#editMarkerMapContainer {
+    width: 100%;
+    height: 100%;
+}
+
+#container {
+    background-color: red;
+    width: 100%;
+    top: 7.6%;
+    height: 92.4%;
+    position: absolute;
+}
+
+.liPadding {
+    padding-right: 40px;
+    margin-top: 8px;
+}
+
+.MainPlaceHolder {
+    width: 100%;
+    top: 6.7%;
+    height: 93.3%;
+    position: absolute;
+}
+
+#MainContentPlaceHolder {
+    height: 100%;
+    width: 100%;
+}
+
+#divUserMarkers {
+    background-color: white;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+#divChartsBanner {
+    height: 600px;
+    width: 100%;
+    position: relative;
+    background-color: #C9302C;
+    top: -19px;
+}
+
+#LastWeekMarkers {
+    width: 300px;
+    height: 250px;
+    top: 10px;
+    color: white;
+    padding-left: 100px;
+    padding-top: 100px;
+}

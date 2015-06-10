@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="3alyamen" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.ACCOUNT_TYPES" Member="ACCOUNT_TYPEs">
+    <Type Name="ACCOUNT_TYPE">
+      <Column Name="ACCOUNT_TYPE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="ACCOUNT_TYPE_USER" Member="USERs" ThisKey="ACCOUNT_TYPE_ID" OtherKey="ACCOUNT_TYPE_ID" Type="USER" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USERS" Member="USERs">
+    <Type Name="USER">
+      <Column Name="USER_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ROLE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FIRST_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LAST_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USERNAME" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="PASSWORD" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="INITIALIZE_DATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ACCOUNT_TYPE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CELLPHONE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="GENDER" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_BLOCK" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="USER_MARKER" Member="MARKERs" ThisKey="USER_ID" OtherKey="USER_ID" Type="MARKER" />
+      <Association Name="USER_QUESTION" Member="QUESTIONs" ThisKey="USER_ID" OtherKey="USER_ID" Type="QUESTION" />
+      <Association Name="ACCOUNT_TYPE_USER" Member="ACCOUNT_TYPE" ThisKey="ACCOUNT_TYPE_ID" OtherKey="ACCOUNT_TYPE_ID" Type="ACCOUNT_TYPE" IsForeignKey="true" />
+      <Association Name="ROLE_USER" Member="ROLE" ThisKey="ROLE_ID" OtherKey="ROLE_ID" Type="ROLE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADVERTISMENT_TYPES" Member="ADVERTISMENT_TYPEs">
+    <Type Name="ADVERTISMENT_TYPE">
+      <Column Name="ADVERTISMENT_TYPE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Association Name="ADVERTISMENT_TYPE_ADVERTISMENT" Member="ADVERTISMENTs" ThisKey="ADVERTISMENT_TYPE_ID" OtherKey="ADVERTISMENT_TYPE_ID" Type="ADVERTISMENT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADVERTISMENTS" Member="ADVERTISMENTs">
+    <Type Name="ADVERTISMENT">
+      <Column Name="ADVERTISMENT_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ADVERTISMENT_TYPE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MARKER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Column Name="INITIALIZE_DATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="EXPIRE_DATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IS_PROMOTED" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IS_APPROVE_PROMOT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ADVERTISMENT_MARKER" Member="MARKERs" ThisKey="ADVERTISMENT_ID" OtherKey="ADVERTISMENT_ID" Type="MARKER" />
+      <Association Name="ADVERTISMENT_TYPE_ADVERTISMENT" Member="ADVERTISMENT_TYPE" ThisKey="ADVERTISMENT_TYPE_ID" OtherKey="ADVERTISMENT_TYPE_ID" Type="ADVERTISMENT_TYPE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AREA_COORINATES" Member="AREA_COORINATEs">
+    <Type Name="AREA_COORINATE">
+      <Column Name="AREA_COORDINATE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AREA_NAME" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LNG1" Type="System.Decimal" DbType="Decimal(18,6) NOT NULL" CanBeNull="false" />
+      <Column Name="LAT1" Type="System.Decimal" DbType="Decimal(18,6) NOT NULL" CanBeNull="false" />
+      <Column Name="LNG2" Type="System.Decimal" DbType="Decimal(18,6) NOT NULL" CanBeNull="false" />
+      <Column Name="LAT2" Type="System.Decimal" DbType="Decimal(18,6) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CATEGORIES" Member="CATEGORies">
+    <Type Name="CATEGORy">
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GENER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="CATEGORy_MARKERS_CATEGORy" Member="MARKERS_CATEGORies" ThisKey="CATEGORY_ID" OtherKey="CATEGORY_ID" Type="MARKERS_CATEGORy" />
+      <Association Name="GENER_CATEGORy" Member="GENER" ThisKey="GENER_ID" OtherKey="GENER_ID" Type="GENER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GENERS" Member="GENERs">
+    <Type Name="GENER">
+      <Column Name="GENER_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="GENER_CATEGORy" Member="CATEGORies" ThisKey="GENER_ID" OtherKey="GENER_ID" Type="CATEGORy" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MARKERS" Member="MARKERs">
+    <Type Name="MARKER">
+      <Column Name="MARKER_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MASTER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="USER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="INITIALIZE_DATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="MARKER_NAME" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Column Name="LNG" Type="System.Decimal" DbType="Decimal(18,6) NOT NULL" CanBeNull="false" />
+      <Column Name="LAT" Type="System.Decimal" DbType="Decimal(18,6) NOT NULL" CanBeNull="false" />
+      <Column Name="ADDRESS" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Column Name="VISITS_COUNTER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ADVERTISMENT_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IS_APPORVED" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IS_EVENT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DAYS_OPEN" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="TIME_FROM" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="TIME_TO" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="MAIN_IMAGE_PATH" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="APPROVAL_VOTE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RATE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RATE_COUNT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="MARKER_MARKERS_CATEGORy" Member="MARKERS_CATEGORies" ThisKey="MARKER_ID" OtherKey="MARKER_ID" Type="MARKERS_CATEGORy" />
+      <Association Name="MARKER_PHONE" Member="PHONEs" ThisKey="MARKER_ID" OtherKey="MARKER_ID" Type="PHONE" />
+      <Association Name="MARKER_REVIEW" Member="REVIEWs" ThisKey="MARKER_ID" OtherKey="MARKER_ID" Type="REVIEW" />
+      <Association Name="ADVERTISMENT_MARKER" Member="ADVERTISMENT" ThisKey="ADVERTISMENT_ID" OtherKey="ADVERTISMENT_ID" Type="ADVERTISMENT" IsForeignKey="true" />
+      <Association Name="USER_MARKER" Member="USER" ThisKey="USER_ID" OtherKey="USER_ID" Type="USER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MARKERS_CATEGORIES" Member="MARKERS_CATEGORies">
+    <Type Name="MARKERS_CATEGORy">
+      <Column Name="MARKER_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="CATEGORy_MARKERS_CATEGORy" Member="CATEGORy" ThisKey="CATEGORY_ID" OtherKey="CATEGORY_ID" Type="CATEGORy" IsForeignKey="true" />
+      <Association Name="MARKER_MARKERS_CATEGORy" Member="MARKER" ThisKey="MARKER_ID" OtherKey="MARKER_ID" Type="MARKER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PAGES" Member="PAGEs">
+    <Type Name="PAGE">
+      <Column Name="PAGE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PAGE_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PAGE_PATH" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="PAGE_ROLES_PAGE" Member="ROLES_PAGEs" ThisKey="PAGE_ID" OtherKey="PAGE_ID" Type="ROLES_PAGE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHONES" Member="PHONEs">
+    <Type Name="PHONE">
+      <Column Name="PHONES" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MARKER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PHONE_NUMBER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="MARKER_PHONE" Member="MARKER" ThisKey="MARKER_ID" OtherKey="MARKER_ID" Type="MARKER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QUESTIONS" Member="QUESTIONs">
+    <Type Name="QUESTION">
+      <Column Name="QUESTION_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QUESTION" Member="QUESTION1" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Column Name="ANSWER" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Column Name="FAQ" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="USER_QUESTION" Member="USER" ThisKey="USER_ID" OtherKey="USER_ID" Type="USER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.REVIEWS" Member="REVIEWs">
+    <Type Name="REVIEW">
+      <Column Name="REVIEW_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MARKER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Association Name="MARKER_REVIEW" Member="MARKER" ThisKey="MARKER_ID" OtherKey="MARKER_ID" Type="MARKER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ROLES" Member="ROLEs">
+    <Type Name="ROLE">
+      <Column Name="ROLE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROLE_MISSION" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="ROLE_USER" Member="USERs" ThisKey="ROLE_ID" OtherKey="ROLE_ID" Type="USER" />
+      <Association Name="ROLE_ROLES_PAGE" Member="ROLES_PAGEs" ThisKey="ROLE_ID" OtherKey="ROLE_ID" Type="ROLES_PAGE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ROLES_PAGES" Member="ROLES_PAGEs">
+    <Type Name="ROLES_PAGE">
+      <Column Name="ROLE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PAGE_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="PAGE_ROLES_PAGE" Member="PAGE" ThisKey="PAGE_ID" OtherKey="PAGE_ID" Type="PAGE" IsForeignKey="true" />
+      <Association Name="ROLE_ROLES_PAGE" Member="ROLE" ThisKey="ROLE_ID" OtherKey="ROLE_ID" Type="ROLE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ENABLED_ADVERTISMENTS" Member="ENABLED_ADVERTISMENTs">
+    <Type Name="ENABLED_ADVERTISMENT">
+      <Column Name="ADVERTISMENT_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ADVERTISMENT_TYPE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MARKER_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ADS_CONTENT" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Column Name="INITIALIZE_DATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="EXPIRE_DATE" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IS_PROMOTED" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IS_APPROVE_PROMOT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ADS_TYPE" Type="System.String" DbType="NVarChar(750) NOT NULL" CanBeNull="false" />
+      <Column Name="GENERS" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MARKER_NAME" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="VISITS_COUNTER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

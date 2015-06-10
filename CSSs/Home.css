@@ -1,0 +1,168 @@
+﻿
+#HomeContentDic {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#mainMap {
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    position: absolute;
+}
+
+
+.controls {
+    margin-top: 16px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+#btnGeolocation {
+    padding-left: 3px;
+    margin-right: 5px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 20px;
+    width: 20px;
+    background-color: ghostwhite;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+#tboxSearchMain {
+    margin-left: 16px;
+    background-color: #fff;
+    padding: 0 11px 0 13px;
+    width: 400px;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+    z-index:2;
+}
+
+    #tboxSearchMain:focus {
+        border-color: #4d90fe;
+        margin-left: 16px;
+        padding-left: 14px;
+        width: 401px;
+    }
+
+#tboxSearchGoogle {
+    z-index:0;
+    position:absolute;
+    margin-left: 16px;
+    background-color: #fff;
+    padding: 0 11px 0 13px;
+    width: 400px;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+    display:none;
+}
+
+    #tboxSearchGoogle:focus {
+        border-color: #4d90fe;
+        margin-left: 16px;
+        padding-left: 14px;
+        width: 401px;
+    }
+
+.Context-Menu {
+    visibility: hidden;
+    background: #ffffff;
+    z-index: 10;
+    position: relative;
+    width: 150px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+    .Context-Menu div {
+        padding-left: 5px;
+    }
+
+    .Context-Menu td {
+        cursor: pointer;
+    }
+
+.Information-Window {
+    display: none;
+    padding-left: 15px;
+    margin-left: 15px;
+    position: relative;
+    height: 25px;
+    align-content: flex-start;
+    margin-top: 60px;
+    background: #ffffff;
+    width: 400px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+#btnSearch {
+    color: #fff;
+    padding: 5px 11px 0px 11px;
+    width: 75px;
+}
+
+    #btnSearch label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+    }
+
+.ui-autocomplete {
+    position: absolute;
+    cursor: default;
+    z-index: 9999 !important;
+}
+
+.Marker-Info-Window {
+    height: auto;
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    padding: 5px;
+    margin-top: 60px;
+    display: none;
+    margin-left: 15px;
+    position: absolute;
+}
+
+#markerInfoWindowCloseBtn {
+    right: 5px;
+    top: 5px;
+    position: absolute;
+}
+
+    #markerInfoWindowCloseBtn:hover {
+        color: mediumvioletred;
+    }
+
+#weatherIcon {
+    position: absolute;
+    right: 5px;
+    top: 15px;
+    cursor: pointer;
+}
+
+#weatherInfoDiv {
+    position: absolute;
+    top: 40px;
+    right: 25px;
+    width: 250px;
+    height: 325px;
+    background-color: white;
+    box-shadow: .2px .2px .2px 2px lightgray;
+    border-radius: 2px;
+    display: none;
+}

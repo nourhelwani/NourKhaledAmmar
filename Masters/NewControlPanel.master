@@ -1,0 +1,95 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="NewControlPanel.master.cs" Inherits="Masters_NewControlPanel" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>ControlPanel</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../CSSs/ControlPanel.css" />
+    <link rel="stylesheet" href="../CSSs/bootstrap-dropdown-checkbox.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../CSSs/bootstrap.min.css" />
+    <script type="text/javascript" src="../Scripts/jquery1.10.2.js"></script>
+    <script type="text/javascript" src="../Scripts/jqueryui1.11.3.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../Scripts/dropzone.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=places,geometry"></script>
+    <script type="text/javascript" src="../Scripts/MarkerClusterer.js"></script>
+    <script type="text/javascript" src="../Scripts/list.js"></script>
+    <script type="text/javascript" src="../Scripts/Codepros.js"></script>
+    <asp:ContentPlaceHolder ID="headHolder" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="Home.aspx">
+                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>3alyamen
+                </a>
+            </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <%if((string)Session["userRoleId"]=="user")
+                  { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li style=" padding-right:40px; margin-top:8px; ">
+                    <div class="btn-group">
+                        <button type="button" id="btnAddAction" class="btn btn-danger dropdown-toggle" style="width:100px;"  data-toggle="dropdown" aria-expanded="false">
+                            Add <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="UserControlPanel.aspx?index=0"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                                Add Marker</a></li>
+                            <li><a href="UserControlPanel.aspx?index=3"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                                Add Advertisement</a></li>
+                        </ul>
+                    </div>
+
+                </li>
+                <li style="padding-right:40px; margin-top:8px;">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" style="width:100px;" data-toggle="dropdown" aria-expanded="false">
+                            Edit <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="UserControlPanel.aspx?index=2"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                Profile Info</a></li>
+                            <li><a href="UserControlPanel.aspx?index=1"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                                Markers Info</a></li>
+                            <li><a href="UserControlPanel.aspx?index=5"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                                Advertisement Info</a></li>
+                            <li><a href="UserControlPanel.aspx?index=6"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                Event Info</a></li>
+                            <li><a href="UserControlPanel.aspx?index=4"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                                Prompt Advertisement</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li><a href="UserControlPanel.aspx"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Reports</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
+                
+            </ul>
+            <%} %>>
+        </div>
+        </div>
+    </nav>
+    <form id="form1" runat="server" >
+
+        <div class="MainPlaceHolder">
+        <asp:ContentPlaceHolder runat="server" ID="MainContentPlaceHolder">
+        </asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+</body>
+</html>
