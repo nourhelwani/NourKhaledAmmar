@@ -11,15 +11,17 @@ public partial class Pages_ViewMore : System.Web.UI.Page
     MarkerHelper markerHelper = new MarkerHelper();
     bool imgClass = true;
     int id;
+    string _markerName = "";
+    string _address = "";
     protected void Page_Load(object sender, EventArgs e)
     {
-         id = int.Parse(Request.QueryString["id"]);
+        id = int.Parse(Request.QueryString["id"]);
         if (!IsPostBack)
         {
             //for bind Rating
             BindRatingControl();
         }
-        string _markerName = "";
+
         DataSet _data = new DataSet();
         if (id != null)
         {
@@ -30,35 +32,10 @@ public partial class Pages_ViewMore : System.Web.UI.Page
             }
             catch { Response.Redirect("m.home.aspx"); }
 
-            ///////
-            /////
-            ///
-            //string[] images = markerHelper.getImagesPath(_markerName);
 
-
-            //List<string> imagesList = new List<string>();
-            //for (int i = 0; i < images.Length; i++)
-            //{
-            //    try
-            //    {
-            //        string imageName = Path.GetFileName(images[i]);
-            //        string path = @"~\images\" + _markerName + "\\" + imageName;
-            //        imagesList.Add(path);
-            //    }
-            //    catch
-            //    {
-            //        divSlider.Attributes.CssStyle.Add("display", "none");
-            //    }
-            //}
-            //if (imagesList.Count == 0)
-            //{
-            //    divSlider.Attributes.CssStyle.Add("display", "none");
-            //}
-
-            //repImages.DataSource = imagesList;
-            //repImages.DataBind();
             markerName.InnerHtml += _markerName;
-            address.InnerHtml += _data.Tables[0].Rows[0]["ADDRESS"].ToString();
+            _address = _data.Tables[0].Rows[0]["ADDRESS"].ToString();
+            address.InnerHtml += _address;
             description.InnerHtml += _data.Tables[0].Rows[0]["DESCRIPTION"].ToString();
             genner.InnerHtml += _data.Tables[0].Rows[0]["TYPE"].ToString();
             workDay.InnerHtml += _data.Tables[0].Rows[0]["DAYS_OPEN"].ToString();
@@ -66,11 +43,34 @@ public partial class Pages_ViewMore : System.Web.UI.Page
                 + _data.Tables[0].Rows[0]["TIME_TO"].ToString();
             lat.Value = _data.Tables[0].Rows[0]["LAT"].ToString();
             lng.Value = _data.Tables[0].Rows[0]["LNG"].ToString();
+            setPhotos(_markerName, _address);
         }
         else { Response.Redirect("m.home.aspx"); }
 
 
 
+    }
+    public void setPhotos(string name, string address)
+    {
+
+        string mapPath = Server.MapPath("~");
+        string imageFolderPath = "" + mapPath + "\\Photos\\" + name + "-" + address;
+        List<ImageList> images = markerHelper.getImagesPath(name, address, imageFolderPath);
+        if (images == null)
+        {
+            divSlider.Attributes.CssStyle.Add("display", "none");
+        }
+
+        else
+        {
+            if (images.Count == 0)
+            {
+                divSlider.Attributes.CssStyle.Add("display", "none");
+
+            }
+            repImages.DataSource = images;
+            repImages.DataBind();
+        }
     }
     protected void BindRatingControl()
     {
@@ -106,7 +106,7 @@ public partial class Pages_ViewMore : System.Web.UI.Page
 
     protected void RatingControlChanged(object sender, AjaxControlToolkit.RatingEventArgs e)
     {
-        
+
         MARKER Mrating = new MARKER();
         Mrating.RATE = ratingControl.CurrentRating;
         Mrating.MARKER_ID = id;//16 ==>id

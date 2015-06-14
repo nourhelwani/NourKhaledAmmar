@@ -154,7 +154,7 @@
                     <li><a href="#" id="PostCode">Post code</a></li>
                     <li><a href="#" id="btnWahtsHere">whats here</a></li>
 
-                    <li><a href="m.ads.aspx" data-ajax="false" id="">Advetisment</a></li>
+                    <li><a href="advertisement.aspx" data-ajax="false" id="">Advetisment</a></li>
                     <li data-role="collapsible" data-iconpos="right" data-shadow="false" data-corners="false">
                         <h2>Sorting</h2>
                         <ul data-role="listview" data-shadow="false" data-inset="true" data-corners="false">
@@ -807,7 +807,7 @@
                             },
                             map: this.gMap,
                             animation: google.maps.Animation.DROP,
-                            "icon": MarkerBlueModel
+                            "icon": MarkerBlueModel,
                         })
                         //call drowPoint2()
 
@@ -927,10 +927,12 @@
                 })
             }
 
+
             window.myMap = myMap;
             window.adsMarkerPoint = adsMarkerPoint;
 
         })(window, window.Codepros)
+
 
         function dorwMarker(lat, lng) {
             $("#adsPanel").panel("close");
@@ -951,6 +953,8 @@
 
             myMap.Center(new google.maps.LatLng(lat, lng));
         }
+
+
 
     </script>
 

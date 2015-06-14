@@ -2,7 +2,7 @@
 <asp:Panel runat="server" CssClass="col-md-*" ID="mt">
     <div class="panel panel-default" runat="server" id="adsMainDiv" style="border-bottom-color: #0094ff;">
         <div class="panel-heading" style="border-bottom-color: #0094ff;padding-bottom:25px">
-                    <img runat="server" id="imgAds" class="media-object" style="width: 64px; float: left; height: 64px;margin-right:5px">
+                    <img runat="server" id="imgAds"  class="media-object" style="width: 64px; float: left; height: 64px;margin-right:5px">
                     <h5 class="media-heading" id="lblMarkerName" runat="server" ></h5>
                     <img runat="server" id="imgGener" style="width: 20px;  height: 20px" />
                     <img runat="server" id="imgType" style="width: 20px; height: 20px" />

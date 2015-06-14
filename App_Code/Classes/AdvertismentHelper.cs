@@ -74,7 +74,13 @@ public class AdvertismentHelper
         string where = "";
         if (typeIs != "")
         {
-            where = "and ADS_TYPE='" + typeIs + "'";
+            where = " where ADS_TYPE='" + typeIs + "'";
+            if (isApprovePromted)
+            {
+            where += " and IS_APPROVE_PROMOT= 1";
+                // to cancel the second if where
+            isApprovePromted = false;
+            }
         }
 
         if (isApprovePromted == true)

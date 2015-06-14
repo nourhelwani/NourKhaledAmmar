@@ -5,5 +5,7 @@ using System.Web;
 
 public class ImageList
 {
-    public string FileName { get; set; }	
+    public string FilePath { get; set; }
+    public string fileName { get; set; }
+    public string teldePath { get; set; }
 }

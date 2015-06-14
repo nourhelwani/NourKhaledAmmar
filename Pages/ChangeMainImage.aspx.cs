@@ -29,7 +29,7 @@ public partial class Pages_ChangeMainImage : System.Web.UI.Page
                     DirectoryInfo di = new DirectoryInfo(Server.MapPath("~") + "\\Photos\\" + markerName + "-" + markerAddress);
                     foreach (var File in di.GetFiles())
                     {
-                        imagesDataSource.Add(new ImageList { FileName = markerName + "-" + markerAddress + "\\" + File.Name });
+                        imagesDataSource.Add(new ImageList { fileName = markerName + "-" + markerAddress + "\\" + File.Name });
                     }
                     imagesRepeater.DataSource = imagesDataSource;
                     imagesRepeater.DataBind();

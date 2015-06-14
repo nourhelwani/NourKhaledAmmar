@@ -9,6 +9,8 @@ using System.IO;
 /// <summary>
 /// Summary description for MarkerHelper
 /// </summary>
+/// 
+
 public class MarkerHelper
 {
     Helper Helper;
@@ -189,7 +191,7 @@ public class MarkerHelper
     public string VoteUp(int markerId)
     {
         Helper.OpenConnection();
-        return Helper.ExcuteNonQuary("update [MARKERS] set APPROVAL_VOTE = APPROVAL_VOTE + 1 where MARKER_ID = "+markerId);
+        return Helper.ExcuteNonQuary("update [MARKERS] set APPROVAL_VOTE = APPROVAL_VOTE + 1 where MARKER_ID = " + markerId);
     }
     public string VoteDown(int markerId)
     {
@@ -260,24 +262,36 @@ public class MarkerHelper
         Helper.OpenConnection();
         return Helper.ExcuteSelectQuery("select id=[MARKER_ID],master=[MASTER_ID],owner=[USER_ID],iniDate=[INITIALIZE_DATE],content=[DESCRIPTION],lat=[LAT],lng=[LNG] from [MARKERS] where [IS_APPORVED]= 0");
     }
-    public List<ImageList> getImagesPath(string markerName, string markerAddress)
+    public List<ImageList> getImagesPath(string markerName, string markerAddress, string path)
     {
         List<ImageList> toReturn = new List<ImageList>();
-        DirectoryInfo di = new DirectoryInfo("~\\Photos\\" + markerName + "-" + markerAddress);
-        if (di.Exists)
+        try
         {
-            foreach (FileInfo file in di.GetFiles())
+
+            DirectoryInfo di = new DirectoryInfo(path);
+            string teldePath = @"~\photos\" + markerName + "-" + markerAddress;
+            if (di.Exists)
             {
-                toReturn.Add(new ImageList { FileName = markerName + "-" + markerAddress + "\\" + file.Name });
+                foreach (FileInfo file in di.GetFiles())
+                {
+
+                    toReturn.Add(new ImageList { FilePath = path + "\\" + file.Name, fileName = file.Name, teldePath = teldePath + "\\" + file.Name });
+                }
+                return toReturn;
             }
-            return toReturn;
         }
+        catch { }
         return null;
     }
     public DataSet GetRateViaMarkerId(int MarkerId)
     {
         Helper.OpenConnection();
         return Helper.ExcuteSelectQuery("select RATE,RATE_COUNT from MARKERS where MARKER_ID='" + MarkerId + "'");
+    }
+    public DataSet getMarkerAddress(int markerId)
+    {
+        Helper.OpenConnection();
+        return Helper.ExcuteSelectQuery("select ADDRESS from MARKERS where MARKER_ID=" + markerId);
     }
     public string UpdateVisitCounter(int MarkerId)
     {
@@ -289,4 +303,5 @@ public class MarkerHelper
         Helper.OpenConnection();
         return Helper.ExcuteNonQuary("update MARKERS set RATE= (RATE + '" + mkRate.RATE + "') , RATE_COUNT=(RATE_COUNT+1) where MARKER_ID='" + mkRate.MARKER_ID + "'  ");
     }
+
 }

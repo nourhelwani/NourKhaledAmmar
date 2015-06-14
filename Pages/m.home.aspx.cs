@@ -17,8 +17,8 @@ public partial class Pages_m_home : System.Web.UI.Page
         DataSet ds = myGenreHelper.SelectAllGeners();
         if (!IsPostBack)
         {
-
-            if (Session["UserName"]!=null)
+            Session["mobile"] = true;
+            if (Session["UserName"] != null)
             {
                 btnSignIn.InnerHtml = "Logout";
             }
@@ -44,8 +44,8 @@ public partial class Pages_m_home : System.Web.UI.Page
     {
         AdvertismentHelper ads = new AdvertismentHelper();
         DataSet s = ads.GetAllValidAdvertismetInfo(sortBy, typeIs, true);
-       repAds.DataSource = s;
-       repAds.DataBind();
+        repAds.DataSource = s;
+        repAds.DataBind();
 
     }
     protected void SelectSortChange_Click(object sender, EventArgs e)
@@ -165,17 +165,51 @@ public partial class Pages_m_home : System.Web.UI.Page
         {
 
             CustomControl_MainAds _userControl = e.Item.FindControl("adsCustomContro") as CustomControl_MainAds;
-            //string[] imagePath = markerHelper.getImagesPath(_userControl.LblMarkerNamePro);
-            //try
-            //{
-            //    string imageName = Path.GetFileName(imagePath[0]);
-            //    _userControl.ImgAdsPro = @"~\images\" + _userControl.LblMarkerNamePro + "\\" + imageName;
+            //add photo
+            int id = int.Parse(_userControl.MarkerIdPro);
+            string markerName = _userControl.LblMarkerNamePro;
+            string mapPath = Server.MapPath("~");
+            string Address = (markerHelper.getMarkerAddress(id)).Tables[0].Rows[0]["ADDRESS"].ToString();
+            string imageFolderPath = "" + mapPath + "\\Photos\\" + markerName + "-" + Address;
 
-            //}
-            //catch
-            //{
-            //    _userControl.ImgAdsPro = @"~\images\no_img.png";
-            //}
+            List<ImageList> images = markerHelper.getImagesPath(markerName, Address, imageFolderPath);
+            if (images != null)
+            {
+
+                bool mainImageExist = false;
+                foreach (ImageList image in images)
+                {
+                    if (image.fileName == "main.jpg" || image.fileName == "main.png")
+                    {
+                        _userControl.ImgAdsPro = image.teldePath;
+                        mainImageExist = true;
+                    }
+
+                }
+
+                if (!mainImageExist)
+                {
+                    try
+                    {
+                        _userControl.ImgAdsPro = images[0].teldePath;
+                    }
+                    catch
+                    {
+                        _userControl.ImgAdsPro = @"~\Photos\no image.png";
+                    }
+                }
+
+            }
+            else
+            {
+                  _userControl.ImgAdsPro = @"~\Photos\no image.png";
+            }
+
+
+
+
+
+
 
 
             ScriptManager scriptManager = ScriptManager.GetCurrent(this.Page);

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="m.ViewMore.aspx.cs" Inherits="Pages_ViewMore" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
 <%@ Register Assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI" TagPrefix="asp" %>
 <!DOCTYPE html>
@@ -15,26 +16,26 @@
     <script type="text/javascript" src="../Scripts/MarkerClusterer.js"></script>
     <script type="text/javascript" src="../Scripts/list.js"></script>
     <script type="text/javascript" src="../Scripts/Codepros.js"></script>
-    
+
     <style type="text/css">
-         .ratingEmpty{
+        .ratingEmpty {
             background-image: url(/MainProject%20-%20Copy/Icons/ratingStarEmpty.gif);
-            width:18px;
-            height:18px;
-            }
-            
-            .ratingFilled{
+            width: 18px;
+            height: 18px;
+        }
+
+        .ratingFilled {
             background-image: url(/MainProject%20-%20Copy/Icons/ratingStarFilled.gif);
-            width:18px;
-            height:18px;
-            }
-            
-            .ratingSaved{
+            width: 18px;
+            height: 18px;
+        }
+
+        .ratingSaved {
             background-image: url(/MainProject%20-%20Copy/Icons/ratingStarSaved.gif);
-            width:18px;
-            height:18px;
-            }
-                 
+            width: 18px;
+            height: 18px;
+        }
+
         body {
             padding-top: 50px;
         }
@@ -42,7 +43,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <ajax:ToolkitScriptManager ID="ScripManager1" runat="server"/>
+        <ajax:ToolkitScriptManager ID="ScripManager1" runat="server" />
         <input type="hidden" runat="server" id="lat" />
         <input type="hidden" runat="server" id="lng" />
 
@@ -77,8 +78,7 @@
                         <asp:Repeater runat="server" ID="repImages" OnItemDataBound="repImages_ItemDataBound">
                             <ItemTemplate>
                                 <asp:Panel runat="server" ID="divImg">
-                                    <asp:Image runat="server" ID="adsImg" ImageUrl='<%#Container.DataItem.ToString()%>' Width="100%" Height="150px" />
-
+                                    <asp:Image runat="server" ID="adsImg" ImageUrl='<%#Eval("teldePath")%>' Width="100%" Height="150px" />
                                 </asp:Panel>
 
                             </ItemTemplate>
@@ -179,11 +179,11 @@
                 <div class="panel-body">
 
                     <h4>Rating</h4>
-                     <asp:UpdatePanel ID="pnlRating" runat="server">
+                    <asp:UpdatePanel ID="pnlRating" runat="server">
                         <ContentTemplate>
                             <table>
                                 <tr>
-                                    <td  >
+                                    <td>
                                         <b>Average Rating:</b>
                                     </td>
                                     <td>
@@ -192,7 +192,9 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><b> <asp:label ID="lblRate" runat="server"/> </b></td>
+                                    <td><b>
+                                        <asp:Label ID="lblRate" runat="server" />
+                                    </b></td>
                                 </tr>
                             </table>
                         </ContentTemplate>
